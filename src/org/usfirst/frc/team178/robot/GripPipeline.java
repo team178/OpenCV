@@ -1,3 +1,5 @@
+package org.usfirst.frc.team178.robot;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -23,6 +25,7 @@ import org.opencv.objdetect.*;
 *
 * @author GRIP
 */
+@SuppressWarnings("unused")
 public class GripPipeline implements VisionPipeline {
 
 	//Outputs
