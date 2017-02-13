@@ -13,27 +13,20 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class CenterOnAirship extends Command {
 
+	private RobotDrive drive;
+	private VisionStreamer frontCamera = new VisionStreamer("frontCamera", "10.1.78.109");
+
 
 	private final Object imgLock = new Object();
 	DriveTrain drivetrain;
 	VisionStreamer camera;
 	
     public CenterOnAirship() {
-    	requires(Robot.drivetrain);
-    	drivetrain = Robot.drivetrain;
-    	requires(Robot.frontCamera);
-    	camera = Robot.frontCamera;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
-   
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
-
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	double centerX;
+    public void centerAndAdvance() {
+		double centerX;
 		synchronized (imgLock) {
 			centerX = camera.getBlendedCenterX();
 		}
