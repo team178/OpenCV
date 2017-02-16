@@ -34,7 +34,7 @@ public class VisionStreamer extends Subsystem {
 	    camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
 	    
 	    visionThread = new VisionThread(camera, new GripPipeline(), pipeline -> {
-	        if (!pipeline.filterContoursOutput().isEmpty()) {
+	        if (pipeline.filterContoursOutput().size()==2) {
 	        	for (int i = 0; i < 2; i++) {
 	            Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(i));
 	            synchronized (imgLock) {
